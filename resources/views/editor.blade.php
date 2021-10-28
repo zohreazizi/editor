@@ -19,11 +19,12 @@
                     <br>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
-                        <input id="title" type="text" name="title" class="form-control" aria-label="Sizing example input"
+                        <input id="title" type="text" name="title" class="form-control"
+                               aria-label="Sizing example input"
                                aria-describedby="inputGroup-sizing-default">
                     </div>
                     <button type="submit" class="btn btn-primary" id="ajaxSubmit">Post</button>
-{{--                    //move to public--}}
+                    {{--                    //move to public--}}
                     <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
                     <script>
                         CKEDITOR.replace('ckeditor');
@@ -46,13 +47,14 @@
                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                     }
                 });
+                var txt = CKEDITOR.instances['ckeditor'].getData()
                 jQuery.ajax({
 
                     url: "{{ url('/post/store') }}",
                     method: 'post',
                     data: {
                         title: jQuery('#title').val(),
-                        ckeditor: jQuery('textarea#ckeditor').val(),
+                        ckeditor: txt,
                     },
 
 
@@ -60,13 +62,11 @@
                         jQuery('.alert').show();
                         jQuery('.alert').html(result.success);
                     },
-                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
                         console.log('AJAX error:', XMLHttpRequest)
                     }
 
                 });
-                var text = $('textarea#ckeditor').val();
-                console.log(text);
 
             });
         });
