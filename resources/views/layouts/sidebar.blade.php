@@ -36,7 +36,11 @@
             <i class="fas fa-plus"></i>
             <span>New Post</span></a>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('users')}}">
+            <i class="fas fa-plus"></i>
+            <span>Users</span></a>
+    </li>
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('logout')}}">

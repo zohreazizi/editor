@@ -22,5 +22,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/editor', [EditorController::class, 'create'])->middleware('auth')->name('edit');
 Route::post('/post/store', [EditorController::class, 'store'])->name('content');
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
-Route::get('/users',[\App\Http\Controllers\UsersController::class, 'index'])->middleware('auth');
+Route::get('/users',[\App\Http\Controllers\UsersController::class, 'index'])->middleware('auth')->name('users');
 Route::get('/fetch-users',[\App\Http\Controllers\UsersController::class, 'fetchUsers'])->middleware('auth');

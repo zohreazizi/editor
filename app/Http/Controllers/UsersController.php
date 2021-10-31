@@ -7,13 +7,17 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function index(){
+    public function index()
+    {
+
         return view('users');
     }
-    public function fetchUsers(){
+
+    public function fetchUsers()
+    {
         $users = User::all();
         return response()->json([
-            'users'=>$users
+            'users' => $users
         ]);
     }
 }
